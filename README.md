@@ -2,19 +2,26 @@
 
 Created for red teaming and penetration testing.
 
+---
+
 ## OVERVIEW
 
 Overview of UAC20 webshell panel
 
-![OVERVIEW](image/overview1.png)
+Main panel overview
+![OVERVIEW](images/overview1.png)
 
 ---
 
-![OVERVIEW](image/overview2.png)
+Terminal / cmd overview
+![OVERVIEW](images/overview2.png)
 
 ---
 
-![OVERVIEW](image/overview3.png)
+Another panel overview
+![OVERVIEW](images/overview3.png)
+
+---
 
 > [!IMPORTANT]
 > This is early development version of this shell
@@ -26,6 +33,8 @@ Overview of UAC20 webshell panel
 ```txt
 SECUR1TY F1R5T
 ```
+
+---
 
 ## Credit
 
