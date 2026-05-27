@@ -6,15 +6,15 @@ Created for red teaming and penetration testing.
 
 Overview of UAC20 webshell panel
 
-![OVERVIEW](image/overview1.jpg)
+![OVERVIEW](image/overview1.png)
 
 ---
 
-![OVERVIEW](image/overview2.jpg)
+![OVERVIEW](image/overview2.png)
 
 ---
 
-![OVERVIEW](image/overview3.jpg)
+![OVERVIEW](image/overview3.png)
 
 > [!IMPORTANT]
 > This is early development version of this shell
