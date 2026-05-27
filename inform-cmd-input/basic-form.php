@@ -16,127 +16,276 @@ if (isset($_POST["cmd"])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>basic webshell with form input cmd</title>
-	<style type="text/css" media="all">
-		* {
-			box-sizing: border-box;
-			padding: 0;
-			margin: 0;
-		}
-		
-		body {
-			margin: 0;
-			padding: 0;
-			position: relative;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			min-height: 100vh;
-			overflow-x: hidden;
-		}
-		
-		.container {
-			background: #000000;
-			background-size: cover;
-			background-repeat: no-repeat;
-			background-position: center;
-			margin: 0;
-			gap: 1rem;
-			padding: 1rem;
-			position: relative;
-			display: flex;
-			flex-direction: column;
-			justify-content: left;
-			align-items: left;
-			min-height: 100vh;
-			min-width: 100vw;
-			max-width: 100vw;
-			overflow-x: hidden;
-		}
-		
-		.content {
-			background: #1b1b1b;
-			background-size: cover;
-			background-repeat: no-repeat;
-			background-position: center;
-			margin: 1rem;
-			padding: 1rem;
-			position: relative;
-			display: flex;
-			flex-direction: column;
-			justify-content: left;
-			align-items: left;
-			border: 1px solid #ffffff;
-			border-radius: 10px;
-		}
-		
-		h2 {
-			font-family: "Helvetica";
-			font-size: 1.5rem;
-			color: #900000;
-			text-align: left;
-		}
-		
-		p {
-			font-family: "Helvetica";
-			font-size: 1rem;
-			color: #ffffff;
-			text-align: left;
-		}
-		
-		.output {
-			background: #000000;
-			background-size: cover;
-			background-repeat: no-repeat;
-			background-position: center;
-			margin: 0;
-			gap: 1rem;
-			padding: 1rem;
-		}
-		
-		input {
-			background: #1a1a1a;
-			background-size: cover;
-			background-repeat: no-repeat;
-			background-position: center;
-			padding: 0.5rem;
-			margin: 0.5rem;
-			width: 100%;
-			color: #ffffff;
-			border: 1px solid #ff0000;
-			border-radius: 10px;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Webshell</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tourney:wght@600&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #000000;
+            --card: #111111;
+            --border: #242424;
+            --border-active: #ff0000;
+            --text: #ffffff;
+            --text-soft: #bdbdbd;
+            --danger: #ff0000;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Space Grotesk", sans-serif;
+            min-height: 100vh;
+            padding: 28px 16px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .header {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 24px 32px;
+        }
+
+        .header h1 {
+            font-family: "Tourney", cursive;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--danger);
+            letter-spacing: 1px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-title h2 {
+            font-family: "Tourney", cursive;
+            font-size: 1.3rem;
+            color: var(--danger);
+            letter-spacing: 1px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            background: #050505;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 14px;
+            color: var(--text);
+            font-size: 0.92rem;
+            font-family: inherit;
+            outline: none;
+            transition: 0.25s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--border-active);
+            box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.12);
+        }
+
+        input[type="submit"] {
+            background: var(--danger);
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            color: #ffffff;
+            font-size: 0.92rem;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        input[type="submit"]:hover {
+            background: #d10000;
+            transform: translateY(-1px);
+        }
+
+        .output-box {
+            background: #050505;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 8px 10px;
+            min-height: 90px;
+            overflow-x: auto;
+        }
+
+        .output {
+            color: #d7d7d7;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .empty {
+            color: #6f6f6f;
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 900px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 16px 12px;
+            }
+
+            .container {
+                gap: 16px;
+            }
+
+            .header {
+                padding: 20px;
+                border-radius: 18px;
+            }
+
+            .card {
+                padding: 16px;
+                border-radius: 18px;
+                gap: 16px;
+            }
+
+            .output-box {
+                padding: 6px 8px;
+                min-height: 70px;
+            }
+
+            input[type="text"],
+            input[type="submit"] {
+                padding: 11px 12px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-	<div class="container">
-		<h2>simple webshell with inurl command</h2>
-		<hr />
-		<div class="content">
-			<h2>cmd input &darr;</h2>
-			<form method="POST" accept-charset="utf-8">
-				<input type="text" name="cmd" value="" required />
-				<input type="submit" value="ENTER" />
-			</form>
-			<?php if (!empty($cmd)): ?>
-	        	<p class="output">
-	            	<?php echo htmlspecialchars($cmd); ?>
-	        	</p>
-	    	<?php endif; ?>
-	    </div>
-		<hr />
-		<div class="content">
-			<h2>cmd output &darr;</h2>
-			<?php if (!empty($output)): ?>
-	        	<p class="output">
-	            	<?php echo htmlspecialchars($output); ?>
-	        	</p>
-	    	<?php endif; ?>
-    	</div>
-	</div>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>SIMPLE WEBSHELL</h1>
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+
+                <div class="card-title">
+                    <h2>CMD INPUT</h2>
+                </div>
+
+                <form method="POST">
+
+                    <input
+                        type="text"
+                        name="cmd"
+                        placeholder="Enter command..."
+                        required
+                    >
+
+                    <input
+                        type="submit"
+                        value="EXECUTE"
+                    >
+
+                </form>
+
+                <div class="output-box">
+
+                    <?php if (!empty($cmd)): ?>
+
+                        <div class="output">
+                            <?php echo htmlspecialchars($cmd); ?>
+                        </div>
+
+                    <?php else: ?>
+
+                        <div class="empty">
+                            No command entered.
+                        </div>
+
+                    <?php endif; ?>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-title">
+                    <h2>CMD OUTPUT</h2>
+                </div>
+
+                <div class="output-box">
+
+                    <?php if (!empty($output)): ?>
+
+                        <div class="output">
+                            <?php echo htmlspecialchars($output); ?>
+                        </div>
+
+                    <?php else: ?>
+
+                        <div class="empty">
+                            Command output will appear here.
+                        </div>
+
+                    <?php endif; ?>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
 </html>
