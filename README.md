@@ -3,7 +3,7 @@
 Created for red teaming and penetration testing.
 
 ![License](https://img.shields.io/badge/AGPL-v3-000000?style=for-the-badge&logo=gnu&logoColor=A42E2B&labelColor=000000&color=brightgreen)
-![PHP](https://img.shields.io/badge/PHP-7+-000000?style=for-the-badge&logo=php&logoColor=8f34ff)
+![PHP](https://img.shields.io/badge/PHP-8.0+-000000?style=for-the-badge&logo=php&logoColor=8f34ff)
 
 ---
 
